@@ -1,0 +1,378 @@
+/* IMPORTING FONTS FROM THE GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap')
+
+/* INCLUDING FONTS FROM THE LOCAL FOLDER */
+@font-face
+  font-family: "Gilroy"
+  src: url("../fonts/Gilroy-Medium.ttf")
+  font-weight: 500
+
+@font-face
+  font-family: "Gilroy"
+  src: url("../fonts/Gilroy-Black.ttf")
+  font-weight: 900
+
+/* BASIC VARIABLES AND MIXINS */
+$color-white: #fff
+$color-grey: #7F8489
+
+@mixin flex($jc:center, $ai:center)
+  display: flex
+  justify-content: $jc
+  align-items: $ai
+
+/* STYLES */
+.btn
+  width: 72px
+  height: 72px
+  border-radius: 50%
+  background: linear-gradient(140deg, #2F353A 14.75%, #1C1F22 84.81%), linear-gradient(140deg, #2F353A 14.75%, #1C1F22 84.81%), linear-gradient(140deg, #2C3036 14.05%, #31343C 85.29%)
+  cursor: pointer
+  border: none
+  @include flex()
+
+  &-shadow-t1
+    box-shadow: 7px 7px 30px #1F2427, -7px -7px 30px #485057
+
+  &-shadow-t2
+    box-shadow: inset 0 0 3px rgba(63, 63, 63, 0.45), 14px 14px 40px rgba(16, 16, 18, 0.75), -7px -7px 30px #262E32
+
+  &-shadow-t3
+    box-shadow: 10px 15px 40px rgba(0, 0, 0, 0.5), -10px -15px 40px rgba(82, 89, 94, 0.5)
+
+  &-sm
+    width: 64px
+    height: 64px
+
+  &:hover
+    background: linear-gradient(140deg, #2A87D3 14.75%, #1F66A4 45.12%, #113C67 84.81%)
+
+    svg
+      path
+        fill: $color-white
+
+  &-stroke
+    &:hover
+      background: linear-gradient(140deg, #2A87D3 14.75%, #1F66A4 45.12%, #113C67 84.81%)
+
+      svg
+        path
+          fill: none
+          stroke: $color-white
+
+        rect
+          fill: $color-white
+
+  &:focus,
+  &:active,
+  &.active
+    background: linear-gradient(140deg, #016BB8 14.75%, #11A8FD 84.81%)
+    outline: none
+    border: 4px solid #0476c5
+
+    svg
+      path
+        fill: $color-white
+
+    &.btn-stroke
+      background: linear-gradient(140deg, #2A87D3 14.75%, #1F66A4 45.12%, #113C67 84.81%)
+
+      svg
+        path
+          fill: none
+          stroke: $color-white
+
+        rect
+          fill: $color-white
+
+.container
+  font-family: 'Lato', sans-serif
+  background-color: #1C1E22
+  min-height: 100vh
+  padding: 2rem
+  @include flex()
+
+.heading
+  font-weight: 900
+  font-size: 24px
+  line-height: 29px
+  text-align: center
+  color: $color-white
+  margin-bottom: 1.1rem
+
+.remote-controller
+  background: linear-gradient(180deg, #353A40 0%, #16171B 100%)
+  border-radius: 60px
+  min-height: 1074px
+  width: 494px
+  border-top: 2px solid #424750
+
+  .top-panel
+    @include flex($jc: space-between)
+    padding: 2.5rem
+
+  .main-panel
+    background: linear-gradient(180deg, #353A40 0%, #16171B 100%)
+    border-radius: 60px
+    min-height: 860px
+    border-top: 2px solid #424750
+    padding: 2rem 2.5rem
+    @include flex($jc: flex-start)
+    flex-direction: column
+    position: relative
+
+    &:after
+      content: url("../img/drag.svg")
+      position: absolute
+      top: 4px
+
+    .section-dashboard
+      width: 100%
+      @include flex($jc: space-between)
+
+      .dashboard-info
+        &-heading
+          color: $color-white
+          margin-top: 0
+          margin-bottom: .6rem
+
+        &-text
+          font-size: 18px
+          color: $color-grey
+          margin: 0
+
+    .section-slider
+      margin-top: 5.8rem
+
+      .slider
+        background: linear-gradient(140deg, #202428 14.05%, #131314 85.29%)
+        box-shadow: 20px 20px 70px #141415, -20px -20px 70px #485057
+        border-radius: 50%
+        width: 322px
+        height: 322px
+        @include flex()
+        position: relative
+
+        &-scale
+          width: 376px
+          height: 322px
+          position: absolute
+
+          &__point
+            background: #15171C
+            border-radius: 20px
+            width: 16px
+            height: 4px
+            position: absolute
+
+            &--active
+              background: #0E9BEF
+              box-shadow: 0 0 10px #0A8ADA
+              border-radius: 20px
+
+            &--first
+              transform: rotate(135deg)
+              bottom: 27px
+              left: 56px
+
+            &--second
+              transform: rotate(0deg)
+              top: 50%
+              left: -5px
+
+            &--third
+              transform: rotate(45deg)
+              left: 45px
+              top: 36px
+
+            &--fourth
+              transform: rotate(90deg)
+              left: calc(50% - 12px)
+              top: -18px
+
+            &--fifth
+              transform: rotate(135deg)
+              right: 45px
+              top: 36px
+
+            &--sixth
+              transform: rotate(0deg)
+              top: 50%
+              right: -5px
+
+            &--seventh
+              transform: rotate(225deg)
+              bottom: 27px
+              right: 56px
+
+        &-data
+          color: $color-white
+          @include flex()
+          flex-direction: column
+
+          &__temperature
+            font-weight: 900
+            font-size: 40px
+            letter-spacing: 0.01em
+
+          &__process
+            font-weight: 500
+            font-size: 18px
+            text-align: center
+
+    .section-fan-speed
+      margin-top: 2rem
+
+    .section-mode
+      margin-top: 2.4rem
+      width: 100%
+
+      .mode
+        @include flex($jc: space-between)
+        width: 100%
+
+        &-item
+          &__title
+            font-size: 18px
+            text-align: center
+            color: $color-grey
+            margin-bottom: 1rem
+            margin-top: 0
+            font-weight: 300
+
+
+/* ROUND SLIDER STYLES CUSTOMIZATION */
+
+.rs-control .rs-range-color
+  background: #11A8FD
+
+.rs-control .rs-path-color
+  background: #161819
+
+.rs-control .rs-handle:after
+  background-color: #838383
+
+.rs-control .rs-bg-color
+  background: linear-gradient(140deg, #202428 14.05%, #131314 85.29%)
+
+.rs-border
+  border: none
+
+.rs-full .rs-tooltip
+  transform: translate(-50%, -50%)
+  margin: 0 !important
+
+.rs-tooltip-text
+  font-family: "Gilroy", sans-serif
+  font-weight: 900
+  font-size: 40px
+  color: $color-white
+  line-height: 0.6
+
+  span
+    font-weight: 500
+    font-size: 18px
+
+.rs-handle-dot
+  background: linear-gradient(320.66deg, #141515 14.75%, #2E3236 84.81%)
+  border: 1px solid #1B1D1E
+  box-sizing: border-box
+  box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.35)
+  position: relative
+  width: 50px !important
+  height: 50px !important
+  margin: -27px 2px 0px !important
+  &:before
+    content: ""
+    position: absolute
+    bottom: 0
+    display: block
+    width: 54px
+    height: 54px
+    background: #11A8FD
+    border-radius: 50%
+    left: -3px
+    top: -4px
+    z-index: -1
+
+.rs-control .rs-handle:after
+  position: absolute
+  width: 4px
+  height: 4px
+  background: #11A8FD
+  border: none
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+.rs-block
+  position: relative
+
+  &:after
+    content: ""
+    position: absolute
+    bottom: 0
+    display: block
+    width: 54px
+    height: 54px
+    background: #11A8FD
+    border-radius: 50%
+    left: 41%
+
+/* ROUND SLIDER STYLES CUSTOMIZATION */
+
+
+/* JQUERY RANGE SLIDER STYLES CUSTOMIZATION */
+
+.slider-container
+  margin-top: 3.5rem
+
+.slider-container .back-bar .pointer-label
+  display: none
+
+.slider-container .scale
+  top: -40px
+
+.theme-blue .back-bar
+  height: 9px
+  border-radius: 100px
+  background: #202226
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.75), inset -2px -2px 2px #4E5154
+
+.theme-blue .back-bar .selected-bar
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 48.67%, rgba(255, 255, 255, 0.04) 59.86%), linear-gradient(89.97deg, #016BB8 2.65%, #0782DB 30.1%, #0F9CEB 59.17%, #11A8FD 101.95%)
+  border-radius: 100px
+  height: 6px
+
+.theme-blue .scale span
+  border: none
+
+.slider-container .scale ins
+  font-size: 14px
+  color: $color-grey
+
+.theme-blue .back-bar .pointer
+  width: 28px
+  height: 28px
+  border-radius: 50%
+  top: -11px
+  background: linear-gradient(320.66deg, #141515 14.75%, #2E3236 84.81%)
+  border: 1px solid #282B2E
+  box-sizing: border-box
+  box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.35)
+  position: relative
+  transform: rotate(-180deg)
+
+  &:after
+    content: ""
+    position: absolute
+    width: 4px
+    height: 4px
+    background: #11A8FD
+    border: none
+    border-radius: 50%
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+/* JQUERY RANGE SLIDER STYLES CUSTOMIZATION */
